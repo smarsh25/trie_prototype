@@ -6,7 +6,7 @@ App.Routers.Main = Backbone.Router.extend({
 
   main: function () {
     var view = new App.Views.Main();
-    $('body').html(view.render().el);
+    $('#container').html(view.render().el);
   },
 
   defaultRoute: function() {
