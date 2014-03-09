@@ -37,11 +37,29 @@ Trie.prototype.getWords = function(words, currentWord){
   // since a Trie doesn't know about its parents.
 };
 
-Trie.prototype.find = function(word, index){
+Trie.prototype.find = function(word){
   // This function will return the node in the trie
   // which corresponds to the end of the passed in word.
-
   // Be sure to consider what happens if the word is not in this Trie.
+
+  // if have successfully found preceding letters, and word is now empty, done/at end.
+  if (word === "") {
+    return this;
+  }
+
+  var charKey, child;
+  // get the leading character of current word
+  charKey = word[0];
+  word = word.substr(1);
+
+  if (this.characters[charKey] === undefined) {
+    return null;
+  }
+  else {
+    child = this.characters[charKey];
+  }
+
+  return child.find(word);
 };
 
 Trie.prototype.autoComplete = function(prefix){
