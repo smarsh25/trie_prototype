@@ -1,9 +1,9 @@
-Trie = function(){
+Trie = function() {
   this.isWord = false;
   this.characters = {};
 };
 
-Trie.prototype.learn = function(word){
+Trie.prototype.learn = function(word) {
   // reached end of word (or given no word)
   if (word.length === 0) {
     return;
@@ -30,14 +30,14 @@ Trie.prototype.learn = function(word){
   child.learn(word);
 };
 
-Trie.prototype.getWords = function(words, currentWord){
+Trie.prototype.getWords = function(words, currentWord) {
   // This function will return all the words which are
   // contained in this Trie.
   // it will use currentWord as a prefix,
   // since a Trie doesn't know about its parents.
 };
 
-Trie.prototype.find = function(word){
+Trie.prototype.find = function(word) {
   // This function will return the node in the trie
   // which corresponds to the end of the passed in word.
   // Be sure to consider what happens if the word is not in this Trie.
