@@ -51,6 +51,10 @@ describe("Trie", function() {
         t.learn("begin");
         expect(t.find("b")).toEqual(t.characters.b);
       });
+      it("returns the right node for end of a word", function(){
+        t.learn("begin");
+        expect(t.find("beg")).toEqual(t.characters.b.characters.e.characters.g);
+      });
     });
 
     describe(".getWords", function(){
