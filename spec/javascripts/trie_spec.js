@@ -61,6 +61,11 @@ describe("Trie", function() {
         var ending = t.characters.b.characters.e.characters.g;
         expect(t.find("beg")).toEqual(ending);
       });
+      it("returns multiple children on different branches", function(){
+        t.learn("begin");
+        t.learn("best");
+        expect(t.getWords()).toEqual(["begin", "best"]);
+      });
     });
 
     describe(".getWords", function(){
