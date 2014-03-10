@@ -30,11 +30,26 @@ Trie.prototype.learn = function(word) {
   child.learn(word);
 };
 
-Trie.prototype.getWords = function(words, currentWord) {
-  // This function will return all the words which are
-  // contained in this Trie.
-  // it will use currentWord as a prefix,
-  // since a Trie doesn't know about its parents.
+Trie.prototype.getWords = function(wordInProgress) {
+  var words = [];
+  var currWords;
+  var child;
+
+  // if wordInProgress isn't defined yet, make an empty string so str cat (+) will work.
+  if (wordInProgress === undefined) {
+    wordInProgress = "";
+  }
+
+  if (this.isWord) {
+    words.push(wordInProgress);
+  }
+
+  for (var currChar in this.characters) {
+    child = this.characters[currChar];
+    currWords = child.getWords(wordInProgress + currChar);
+    words = words.concat(currWords);
+  }
+  return words;
 };
 
 Trie.prototype.find = function(word) {
